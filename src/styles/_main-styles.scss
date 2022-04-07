@@ -1,0 +1,39 @@
+// ОСНОВНЫЕ СТИЛИ:
+html,
+body {
+    height: 100%; // не трогай
+    font-family: $fontFamilyMain; // не трогай
+    font-weight: $fontWeightMain; // не трогай
+    font-style: $fontStyleMain; // не трогай
+    font-size: $fontSizeMain; // не трогай
+    line-height: $lineHeightMain; // не трогай
+    color: $fontColorMain; // не трогай
+    background-color: $backgroundColorMain; // не трогай
+    min-width: 320px; // не трогай
+    // position: relative; // сам решай
+    // overflow: hidden; // сам решай
+}
+
+// самая верхняя оболочка (был wrapper, а сейчас app)
+.app {
+    min-height: 100%; // не трогай
+}
+
+// контент
+.container {
+    max-width: $maxWidthContentPX; // не трогай
+    margin: 0 auto; // не трогай
+    padding: 0 10px; // сам решай
+    min-width: $minWidthContentPX; // не трогай
+}
+
+// для выделения текста на сайте
+::selection {
+    color: $backgroundColorMain; // не трогай
+    background: $fontColorMain; // не трогай
+}
+
+// подсказывающий текст (при наведении или в input)
+::placeholder {
+    color: $placeholderColorMain; // не трогай
+}

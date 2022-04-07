@@ -1,0 +1,25 @@
+// ОБНУЛЕНИЕ:
+*,
+*::before,
+*::after {
+    margin: 0; // не трогай
+    padding: 0; // не трогай
+    border: 0; // не трогай
+    box-sizing: border-box; // не трогай
+    // outline: none; // линия вокруг элемента: не отображается - сам решай
+}
+
+a {
+    text-decoration: none; // не трогай
+    color: inherit; // не трогай
+}
+
+ul,
+ol,
+li {
+    list-style: none; // не трогай
+}
+
+h1 {
+    margin: 0; // не трогай (normalize.css добавляет margin, а это затем убирает)
+}
