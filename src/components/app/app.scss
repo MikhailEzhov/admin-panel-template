@@ -1,0 +1,11 @@
+.content {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    @media (max-width: 767.98px) {
+        flex-direction: column;
+    }
+}
+

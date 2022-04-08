@@ -1,0 +1,67 @@
+.element-card {
+    margin-bottom: 5px;
+    position: relative;
+
+	&__name {
+		color: #000000;
+	}
+
+	&__description {
+		color: #000000;
+	}
+
+	&__block {
+		padding: 5px;
+
+		&_category1 {
+			background-color: #CCFF90;
+		}
+	
+		&_category2 {
+			background-color: #FF8A80;
+		}
+	
+		&_category3 {
+			background-color: #B388FF;
+		}
+
+		&_default {
+			background-color: #FFFFFF;
+		}
+	}
+}
+
+.element-card__button {
+    position: absolute;
+	background-color: inherit;
+	top: 0;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	opacity: 0.4;
+	cursor: pointer;
+    transition: opacity ease 0.5s;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.element-card__button::before,
+.element-card__button::after {
+	content: '';
+	position: absolute;
+	top: 10px;
+	display: block;
+	width: 24px;
+	height: 3px;
+	background: #000000;
+}
+
+.element-card__button::before {
+	transform: rotate(45deg);
+}
+
+.element-card__button::after {
+	transform: rotate(-45deg);
+}
+
