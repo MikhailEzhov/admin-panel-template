@@ -7,9 +7,11 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^7.1.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.8",
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",
     "web-vitals": "^2.1.4"
@@ -17,7 +19,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"npx json-server elements.json --port 3001\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
