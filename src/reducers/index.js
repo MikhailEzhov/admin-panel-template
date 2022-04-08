@@ -22,6 +22,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 elementsLoadingStatus: 'error'
             }
+        case 'ELEMENT_DELETED': 
+            // Формируем новый массив, метод filter вернет новый массив
+            const newElementsList = state.elements.filter(item => item.id !== action.payload);
+            return {
+                ...state,
+                elements: newElementsList
+            }
         default: return state
     }
 }

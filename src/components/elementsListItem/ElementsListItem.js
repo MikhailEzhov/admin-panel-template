@@ -2,7 +2,7 @@ import './elementsListItem.scss';
 
 
 
-const ElementsListItem = ({name, description, category}) => {
+const ElementsListItem = ({name, description, category, onDelete}) => {
 
     let elementClassName;
 
@@ -28,7 +28,12 @@ const ElementsListItem = ({name, description, category}) => {
                 <p className="element-card__description">{description}</p>
             </div>
 
-            <button type="button" className="element-card__button" aria-label="Close"></button>
+            <button 
+                type="button" 
+                className="element-card__button" 
+                aria-label="Close"
+                onClick={onDelete}
+                ></button>
         </li>
     )
 }

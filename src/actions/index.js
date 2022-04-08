@@ -16,3 +16,10 @@ export const elementsFetchingError = () => {
         type: 'ELEMENTS_FETCHING_ERROR'
     }
 }
+
+export const elementDeleted = (id) => {
+    return {
+        type: 'ELEMENT_DELETED',
+        payload: id
+    }
+}
