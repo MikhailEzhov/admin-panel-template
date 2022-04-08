@@ -23,3 +23,10 @@ export const elementDeleted = (id) => {
         payload: id
     }
 }
+
+export const elementCreated = (element) => {
+    return {
+        type: 'ELEMENT_CREATED',
+        payload: element
+    }
+}

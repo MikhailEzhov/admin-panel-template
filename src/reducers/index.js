@@ -29,6 +29,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 elements: newElementsList
             }
+        case 'ELEMENT_CREATED':
+            // Формируем новый массив    
+            let newCreatedElementsList = [...state.elements, action.payload];
+            return {
+                ...state,
+                elements: newCreatedElementsList
+            }
         default: return state
     }
 }
