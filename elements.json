@@ -1,0 +1,44 @@
+{
+    "elements": [
+        {
+            "id": 1,
+            "name": "name1",
+            "description": "description1",
+            "category": "category1"
+        },
+        {
+            "id": 2,
+            "name": "name2 name2 name2",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+            "category": "category2"
+        },
+        {
+            "id": 3,
+            "name": "name3 name3 name3 name3 name3 name3",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,",
+            "category": "category3"
+        }
+    ],
+    "filters": [
+        {
+            "name": "all",
+            "label": "all",
+            "className": "elements-filters__button_all"
+        },
+        {
+            "name": "category1",
+            "label": "category1",
+            "className": "elements-filters__button_category1"
+        },
+        {
+            "name": "category2",
+            "label": "category2",
+            "className": "elements-filters__button_category2"
+        },
+        {
+            "name": "category3",
+            "label": "category3",
+            "className": "elements-filters__button_category3"
+        }
+    ]
+}
