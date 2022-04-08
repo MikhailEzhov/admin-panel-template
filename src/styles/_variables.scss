@@ -1,16 +1,16 @@
 // ПЕРЕМЕННЫЕ:
-$fontFamilyMain: "", Arial, Helvetica, sans-serif; // основное семейство шрифта
+$fontFamilyMain: "Roboto", Arial, Helvetica, sans-serif; // основное семейство шрифта
 $fontStyleMain: normal; // основной стиль шрифта
 $fontWeightMain: normal; // основная жирность шрифта
-$fontSizeMain: 25px; // основной размер шрифта
+$fontSizeMain: 20px; // основной размер шрифта
 $lineHeightMain: 1.5; // основная высота между текстом
 $fontColorMain: #FFFFFF; // основной цвет шрифта
 
-$placeholderColorMain: #CCCCCC; // основной цвет подсказки (при наведении или в input)
+$placeholderColorMain: #707070; // основной цвет подсказки (при наведении или в input)
 
-$borderColorMain: #252525; // основной цвет бордера
+$borderColorMain: #FDFDFD; // основной цвет бордера
 
-$backgroundColorMain: #252525; // основной цвет фона
+$backgroundColorMain: #000000; // основной цвет фона
 
 $maxWidthContentNumber: 1440; // максимальная ширина только контента (это не ширина макета)
 $maxWidthContentPX: 1440px; // максимальная ширина только контента (это не ширина макета)
@@ -20,4 +20,5 @@ $minWidthContentPX: 320px; // минимальная ширина контент
 
 // ДОПОЛНИТЕЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ ЭТОГО ПРОЕКТА:
 // $breakpointHeaderMenu: 767.98px;
+
 
