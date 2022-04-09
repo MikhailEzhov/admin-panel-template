@@ -16,6 +16,7 @@ const ElementsAddForm = () => {
     const [elementDescription, setElementDescription] = useState('');
     const [elementCategory, setElementCategory] = useState('');
 
+    const {filters, filtersLoadingStatus} = useSelector(state => state); // из state получаем и диструктуризируем поля
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 
@@ -27,7 +28,7 @@ const ElementsAddForm = () => {
             id: uuidv4(), // генерация id через библиотеку uuid
             name: elementName,
             description: elementDescription,
-            сategory: elementCategory
+            category: elementCategory
         }
         // Отправка данных на сервер и в store
         request("http://localhost:3001/elements", "POST", JSON.stringify(newElement)) // отправка на сервер, формат JSON
@@ -38,6 +39,26 @@ const ElementsAddForm = () => {
         setElementName('');
         setElementDescription('');
         setElementCategory('');
+    }
+
+
+    // Функция для рендаринга фильтров
+    const renderFilters = (filters, status) => {
+        // проверка загрузки фильтров
+        if (status === "loading") {
+            return <option>Loading elements</option>
+        } else if (status === "error") {
+            return <option>loading error</option>
+        }
+        // если фильтры есть, то рендерим их
+        if (filters && filters.length > 0 ) {
+            return filters.map(({name, label}) => {
+                // eslint-disable-next-line
+                if (name === 'all')  return; // фильтр all не нужен, остановка на нём
+
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
     }
 
 
@@ -79,10 +100,8 @@ const ElementsAddForm = () => {
                     name="category"
                     value={elementCategory}
                     onChange={(e) => setElementCategory(e.target.value)}>
-                    <option>The category for the element...</option>
-                    <option value="category1">category1</option>
-                    <option value="category2">category2</option>
-                    <option value="category3">category3</option>
+                    <option value="">The category for the element...</option>
+                    {renderFilters(filters, filtersLoadingStatus)}
                 </select>
             </div>
 

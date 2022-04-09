@@ -12,22 +12,6 @@
 
 	&__block {
 		padding: 5px;
-
-		&_category1 {
-			background-color: #CCFF90;
-		}
-	
-		&_category2 {
-			background-color: #FF8A80;
-		}
-	
-		&_category3 {
-			background-color: #B388FF;
-		}
-
-		&_default {
-			background-color: #FFFFFF;
-		}
 	}
 }
 
@@ -65,3 +49,23 @@
 	transform: rotate(-45deg);
 }
 
+
+.color-all {
+	background-color: #FFFFFF;
+}
+
+.color-1 {
+	background-color: #CCFF90;
+}
+
+.color-2 {
+	background-color: #FF8A80;
+}
+
+.color-3 {
+	background-color: #B388FF;
+}
+
+.color-default {
+	background-color: #FFFFFF;
+}

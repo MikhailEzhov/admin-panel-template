@@ -8,22 +8,22 @@ const ElementsListItem = ({name, description, category, onDelete}) => {
 
     switch (category) {
         case 'category1':
-            elementClassName = 'element-card__block_category1';
+            elementClassName = 'color-1';
             break;
         case 'category2':
-            elementClassName = 'element-card__block_category2';
+            elementClassName = 'color-2';
             break;
         case 'category3':
-            elementClassName = 'element-card__block_category3';
+            elementClassName = 'color-3';
             break;
         default:
-            elementClassName = 'element-card__block_default';
+            elementClassName = 'color-default';
     }
 
     return (
-        <li className="element-card">
+        <li className={`element-card ${elementClassName}`}>
 
-            <div className={`element-card__block ${elementClassName}`}>
+            <div className="element-card__block">
                 <h3 className="element-card__name">{name}</h3>
                 <p className="element-card__description">{description}</p>
             </div>

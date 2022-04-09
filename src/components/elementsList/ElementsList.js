@@ -6,11 +6,13 @@ import { elementsFetching, elementsFetched, elementsFetchingError, elementDelete
 import ElementsListItem from "../elementsListItem/ElementsListItem";
 import Spinner from '../spinner/Spinner';
 
+import './elementsList.scss';
+
 
 
 const ElementsList = () => {
 
-    const {elements, elementsLoadingStatus} = useSelector(state => state); // из state получаем и диструктурируем два поля
+    const {filteredElements, elementsLoadingStatus} = useSelector(state => state); // из state получаем и диструктуризируем поля
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 
@@ -43,7 +45,7 @@ const ElementsList = () => {
     }
 
 
-    // Рендеринг элементов из массива
+    // Функция для рендаринга списка элементов
     const renderElementsList = (arr) => {
         if (arr.length === 0) {
             return <h4 className="">No elements</h4>
@@ -51,18 +53,18 @@ const ElementsList = () => {
         // перебор массива, возврат компонента с передачей свойств во внутрь
         return arr.map(({id, ...props}) => {
             return <ElementsListItem 
-                key={id} 
-                {...props}
-                onDelete={() => onDelete(id)}
-                />
+                    key={id} 
+                    {...props}
+                    onDelete={() => onDelete(id)}
+                    />
         })
     }
 
 
-    const items = renderElementsList(elements);
+    const items = renderElementsList(filteredElements); // отфильтрованные элементы
 
     return (
-        <ul>
+        <ul className="elements-list">
             {items}
         </ul>
     )
