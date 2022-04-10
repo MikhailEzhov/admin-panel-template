@@ -3,8 +3,7 @@ const initialState = {
     elementsLoadingStatus: 'null',
     filters: [],
     filtersLoadingStatus: 'null',
-    activeFilter: 'all',
-    filteredElements: []
+    activeFilter: 'all'
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,10 +17,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 elements: action.payload,
-                // Фильтруем новые данные по фильтру, который сейчас применяется
-                filteredElements: state.activeFilter === 'all' ? 
-                                action.payload : 
-                                action.payload.filter(item => item.category === state.activeFilter),
                 elementsLoadingStatus: 'null'
             }
         case 'ELEMENTS_FETCHING_ERROR':
@@ -29,27 +24,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 elementsLoadingStatus: 'error'
             }
-        case 'ELEMENT_DELETED': 
-            // Формируем новый массив, метод filter вернет новый массив
-            const newElementsList = state.elements.filter(item => item.id !== action.payload);
+        case 'ELEMENT_DELETED':
             return {
                 ...state,
-                elements: newElementsList,
-                // Фильтруем новые данные по фильтру, который сейчас применяется
-                filteredElements: state.activeFilter === 'all' ? 
-                                newElementsList : 
-                                newElementsList.filter(item => item.category === state.activeFilter)
+                elements: state.elements.filter(item => item.id !== action.payload)
             }
         case 'ELEMENT_CREATED':
-            // Формируем новый массив    
-            let newCreatedElementsList = [...state.elements, action.payload];
             return {
                 ...state,
-                elements: newCreatedElementsList,
-                // Фильтруем новые данные по фильтру, который сейчас применяется
-                filteredElements: state.activeFilter === 'all' ? 
-                                newCreatedElementsList : 
-                                newCreatedElementsList.filter(item => item.category === state.activeFilter)
+                elements: [...state.elements, action.payload]
             }
         case 'FILTERS_FETCHING':
             return {
@@ -70,10 +53,7 @@ const reducer = (state = initialState, action) => {
         case 'ACTIVE_FILTER_CHANGED':
             return {
                 ...state,
-                activeFilter: action.payload,
-                filteredElements: action.payload === 'all' ? 
-                                state.elements :
-                                state.elements.filter(item => item.category === action.payload)
+                activeFilter: action.payload
             }
         default: return state
     }
