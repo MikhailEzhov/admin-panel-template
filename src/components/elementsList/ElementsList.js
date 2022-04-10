@@ -1,6 +1,7 @@
 import { useHttp } from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { elementsFetching, elementsFetched, elementsFetchingError, elementDeleted } from '../../actions';
 import ElementsListItem from "../elementsListItem/ElementsListItem";
@@ -12,14 +13,22 @@ import './elementsList.scss';
 
 const ElementsList = () => {
 
-    // получение отфильтрованных элементов
-    const filteredElements = useSelector(state => {
-        if (state.filters.activeFilter === 'all') {
-            return state.elements.elements;
-        } else {
-            return state.elements.elements.filter(item => item.category === state.filters.activeFilter);
+    // Функция, берет разные части state и на их основе вернет значение
+    // мемоизирована от перерендаринга через createSelector - reselect
+    const selectValue = createSelector(
+        (state) => state.filters.activeFilter, // filter
+        (state) => state.elements.elements,    // elements
+        (filter, elements) => {
+            if (filter === 'all') {
+                // console.log('render');
+                return elements;
+            } else {
+                return elements.filter(item => item.category === filter);
+            }
         }
-    })
+    );
+
+    const filteredElements = useSelector(selectValue); // получение отфильтрованных элементов
 
     const elementsLoadingStatus = useSelector(state => state.elementsLoadingStatus); // из state получаем нужное поле
     const dispatch = useDispatch(); // получение функции dispatch
