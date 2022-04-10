@@ -14,10 +14,10 @@ const ElementsList = () => {
 
     // получение отфильтрованных элементов
     const filteredElements = useSelector(state => {
-        if (state.activeFilter === 'all') {
-            return state.elements;
+        if (state.filters.activeFilter === 'all') {
+            return state.elements.elements;
         } else {
-            return state.elements.filter(item => item.category === state.activeFilter);
+            return state.elements.elements.filter(item => item.category === state.filters.activeFilter);
         }
     })
 

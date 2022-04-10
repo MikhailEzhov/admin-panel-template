@@ -16,7 +16,7 @@ const ElementsAddForm = () => {
     const [elementDescription, setElementDescription] = useState('');
     const [elementCategory, setElementCategory] = useState('');
 
-    const {filters, filtersLoadingStatus} = useSelector(state => state); // из state получаем и диструктуризируем поля
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters); // из state.filters получаем и диструктуризируем поля
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 

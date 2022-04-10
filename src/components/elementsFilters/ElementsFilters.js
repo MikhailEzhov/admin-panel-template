@@ -12,7 +12,7 @@ import './elementsFilters.scss';
 
 const ElementsFilters = () => {
 
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state); // из state получаем и диструктуриризируем поля
+    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state.filters); // из state.filters получаем и диструктуризируем поля
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 

@@ -1,12 +1,9 @@
 const initialState = {
     elements: [],
-    elementsLoadingStatus: 'null',
-    filters: [],
-    filtersLoadingStatus: 'null',
-    activeFilter: 'all'
+    elementsLoadingStatus: 'null'
 }
 
-const reducer = (state = initialState, action) => {
+const elements = (state = initialState, action) => {
     switch (action.type) {
         case 'ELEMENTS_FETCHING':
             return {
@@ -34,29 +31,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 elements: [...state.elements, action.payload]
             }
-        case 'FILTERS_FETCHING':
-            return {
-                ...state,
-                filtersLoadingStatus: 'loading'
-            }
-        case 'FILTERS_FETCHED':
-            return {
-                ...state,
-                filters: action.payload,
-                filtersLoadingStatus: 'null'
-            }
-        case 'FILTERS_FETCHING_ERROR':
-            return {
-                ...state,
-                filtersLoadingStatus: 'error'
-            }
-        case 'ACTIVE_FILTER_CHANGED':
-            return {
-                ...state,
-                activeFilter: action.payload
-            }
         default: return state
     }
 }
 
-export default reducer;
+export default elements;
