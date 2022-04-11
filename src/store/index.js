@@ -1,4 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+
+// redux-thunk популярный Middleware, чаще всего его используют чтобы в dispatch передавать функцию, 
+// которая потом что-то делает ассинхронно (запросы на сервер, тайм-ауты, промисы)
+import ReduxThunk from 'redux-thunk';
+
 import elements from '../reducers/elements';
 import filters from '../reducers/filters';
 
@@ -21,7 +26,7 @@ const stringMiddleware = () => (next) => (action) => {
 const store = createStore(
     combineReducers({elements, filters}),                                            // объединение отдельных reducers
     compose(                                                                         // второй аргумент(соединение-композиция функций)
-        applyMiddleware(stringMiddleware),                                               // последовательно запускает все Middlewares
+        applyMiddleware(ReduxThunk, stringMiddleware),                                   // последовательно запускает все Middlewares
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()     // всегда внизу - для расширения Redux DevTools
     ) 
 );

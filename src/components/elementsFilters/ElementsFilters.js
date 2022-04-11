@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } from '../../actions';
+import { fetchFilters, activeFilterChanged } from '../../actions';
 import Spinner from '../spinner/Spinner';
 
 import './elementsFilters.scss';
@@ -16,12 +16,9 @@ const ElementsFilters = () => {
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 
-    // Запрос на сервер для получения фильтров и последовательной смены состояния
+
     useEffect(() => {
-        dispatch(filtersFetching());                       // отправка в store(получение фильтров)
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(filtersFetched(data)))  // тогда, отправка в store(фильтры загружены)
-            .catch(() => dispatch(filtersFetchingError())) // ловим, отправка в store(ошибка при загрузке)
+        dispatch(fetchFilters(request)); // отправка в store(запускаем общее действие, сделает запрос на получение, обработает разные состояния ответа)
         // eslint-disable-next-line
     }, []);
 

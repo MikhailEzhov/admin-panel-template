@@ -3,7 +3,7 @@ import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { elementsFetching, elementsFetched, elementsFetchingError, elementDeleted } from '../../actions';
+import { fetchElements, elementDeleted } from '../../actions';
 import ElementsListItem from "../elementsListItem/ElementsListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -30,16 +30,13 @@ const ElementsList = () => {
 
     const filteredElements = useSelector(selectValue); // получение отфильтрованных элементов
 
-    const elementsLoadingStatus = useSelector(state => state.elementsLoadingStatus); // из state получаем нужное поле
+    const elementsLoadingStatus = useSelector(state => state.elements.elementsLoadingStatus); // из state.elements получаем нужное поле
     const dispatch = useDispatch(); // получение функции dispatch
     const {request} = useHttp(); // получение функции, которая делает запрос
 
 
     useEffect(() => {
-        dispatch(elementsFetching());                       // отправка в store(запуск загрузки)
-        request("http://localhost:3001/elements")
-            .then(data => dispatch(elementsFetched(data)))  // тогда, отправка в store(элементы загружены)
-            .catch(() => dispatch(elementsFetchingError())) // ловим, отправка в store(ошибка при загрузке)
+        dispatch(fetchElements(request)); // отправка в store(запускаем общее действие, сделает запрос на получение, обработает разные состояния ответа)
         // eslint-disable-next-line
     }, []);
 
