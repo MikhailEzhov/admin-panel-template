@@ -3,7 +3,9 @@ import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { fetchElements, elementDeleted } from '../../actions';
+import { fetchElements} from '../../actions';
+import { elementDeleted } from './elementsSlice';
+
 import ElementsListItem from "../elementsListItem/ElementsListItem";
 import Spinner from '../spinner/Spinner';
 

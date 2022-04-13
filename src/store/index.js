@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import elements from '../reducers/elements';
-import filters from '../reducers/filters';
+import elements from '../components/elementsList/elementsSlice';
+import filters from '../components/elementsFilters/filtersSlice';
 
 
 
