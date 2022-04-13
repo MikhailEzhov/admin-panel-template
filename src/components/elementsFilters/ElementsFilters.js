@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-import { fetchFilters } from '../../actions';
-import { activeFilterChanged } from './filtersSlice';
+import { fetchFilters, activeFilterChanged } from './filtersSlice';
 
 import Spinner from '../spinner/Spinner';
 
@@ -20,7 +19,7 @@ const ElementsFilters = () => {
 
 
     useEffect(() => {
-        dispatch(fetchFilters(request)); // отправка в store(запускаем общее действие, сделает запрос на получение, обработает разные состояния ответа)
+        dispatch(fetchFilters(request)); // отправка в store(запускаем действие, сделает запрос на получение, обработает разные состояния ответа)
         // eslint-disable-next-line
     }, []);
 

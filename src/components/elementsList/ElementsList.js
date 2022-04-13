@@ -1,10 +1,9 @@
 import { useHttp } from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
-import { fetchElements} from '../../actions';
-import { elementDeleted } from './elementsSlice';
+import { fetchElements, elementDeleted } from './elementsSlice';
 
 import ElementsListItem from "../elementsListItem/ElementsListItem";
 import Spinner from '../spinner/Spinner';
@@ -38,7 +37,7 @@ const ElementsList = () => {
 
 
     useEffect(() => {
-        dispatch(fetchElements(request)); // отправка в store(запускаем общее действие, сделает запрос на получение, обработает разные состояния ответа)
+        dispatch(fetchElements()); // отправка в store(запускаем действие)
         // eslint-disable-next-line
     }, []);
 
